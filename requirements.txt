@@ -1,4 +1,4 @@
 pandas
 yahoo_fin
 datetime
-streamlit==1.12.0*
+streamlit==1.12.0
