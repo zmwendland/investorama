@@ -1,16 +1,14 @@
 import pandas as pd
 import streamlit as st
-from datetime import datetime, date, timedelta
+from datetime import  date, timedelta
 from yahoo_fin import stock_info 
-import yahoo_fin as yf
+
 
 st.set_page_config(
     page_title="Investorama",
     page_icon="📈",
 )
 
-
-st.sidebar.success('Navigation')
 
 yesterday = date.today() - timedelta(days=1)
 yesterday.strftime('%m%d%y')
