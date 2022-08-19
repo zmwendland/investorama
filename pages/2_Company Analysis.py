@@ -32,6 +32,7 @@ if(infoType == 'Fundamental'):
     st.markdown('** Website **: ' + info['website'])
     st.markdown('** Business Summary **')
     st.info(info['longBusinessSummary'])
+    st.caption(stock.news)
         
     fundInfo = {
             'Enterprise Value (USD)': info['enterpriseValue'],
@@ -57,9 +58,7 @@ if(infoType == 'Fundamental'):
     st.table(fundDF)
     
     st.subheader('General Stock Info') 
-    st.markdown('** Market **: ' + info['market'])
-    st.markdown('** Exchange **: ' + info['exchange'])
-    st.markdown('** Quote Type **: ' + info['quoteType'])
+
     
     start = dt.datetime.today()-dt.timedelta(2 * 365)
     end = dt.datetime.today()
@@ -92,10 +91,11 @@ if(infoType == 'Fundamental'):
         }
     
     marketDF = pd.DataFrame(data=marketInfo, index=[0])
+    
     st.table(marketDF)
     st.subheader('**Income Statement**')
     income_st = stock.get_financials()
-    st.table(round(income_st,-4))
+    st.table(income_st)
 else:
     def calcMovingAverage(data, size):
         df = data.copy()
