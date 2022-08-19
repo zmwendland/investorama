@@ -95,7 +95,7 @@ if(infoType == 'Fundamental'):
     st.table(marketDF)
     st.subheader('**Income Statement**')
     income_st = stock.get_financials()
-    st.table(income_st)
+    st.table(round(income_st,-4))
 else:
     def calcMovingAverage(data, size):
         df = data.copy()
