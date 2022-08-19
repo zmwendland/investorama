@@ -19,6 +19,7 @@ spx = stock_info.get_live_price('^gspc')
 dow = stock_info.get_live_price('^dji')
 qqq = stock_info.get_live_price('^ixic')
 ten_yr = stock_info.get_live_price('^tnx')
+gold = stock_info.get_live_price('GC=F')
 
 spx_yst = stock_info.get_data('^gspc',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
 spx_yesterday = pd.DataFrame(spx_yst).reset_index()
@@ -40,6 +41,15 @@ ten_yesterday = pd.DataFrame(ten_yr_yst).reset_index()
 ten_yst_final = ten_yesterday['close'][0]
 ten_pct = str(round((ten_yr/ten_yst_final-1)*100,2))+'%'
 
+gold_yst = stock_info.get_data('^tnx',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
+gold_yesterday = pd.DataFrame(gold_yst).reset_index()
+gold_yst_final = gold_yesterday['close'][0]
+gold_pct = str(round((gold/gold_yst_final-1)*100,2))+'%'
+
+ten_yr_yst = stock_info.get_data('^tnx',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
+ten_yesterday = pd.DataFrame(ten_yr_yst).reset_index()
+ten_yst_final = ten_yesterday['close'][0]
+ten_pct = str(round((ten_yr/ten_yst_final-1)*100,2))+'%'
 
 
 
@@ -75,8 +85,10 @@ col5.metric(label='',value=round(dow,2),delta=dow_pct)
 col6.metric(label='',value=round(qqq,2),delta=qqq_pct)
 
 col7,col8,col9 = st.columns(3)
-col6.subheader('**10-Year**')
-col6.metric(label='',value=round(ten_yr,2),delta=ten_pct)
+col7.subheader('**10-Year**')
+col7.metric(label='',value=round(ten_yr,2),delta=ten_pct)
+col8.subheader('**Gold**')
+col8.metric(label='',value=round(gold,2),delta=ten_pct)
 
 st.subheader('Futures')
 st.dataframe(futures)
