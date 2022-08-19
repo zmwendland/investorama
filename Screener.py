@@ -5,7 +5,7 @@ import datetime as dt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-snp500 = pd.read_csv("Datasets/SP500.csv")
+snp500 = pd.read_csv("pages/Datasets/SP500.csv")
 symbols = snp500['Symbol'].sort_values().tolist()        
 
 ticker = st.sidebar.selectbox(
