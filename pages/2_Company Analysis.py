@@ -32,7 +32,7 @@ if(infoType == 'Fundamental'):
     st.markdown('** Website **: ' + info['website'])
     st.markdown('** Business Summary **')
     st.info(info['longBusinessSummary'])
-    st.caption(stock.news)
+    st.table(stock.news)
         
     fundInfo = {
             'Enterprise Value (USD)': info['enterpriseValue'],
