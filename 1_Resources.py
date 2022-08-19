@@ -1,7 +1,11 @@
 import streamlit as st
+import Home
 
-st.title('Stock Market Resources')
+st.set_page_config(page_title="Resources", page_icon="📈")
 
+# st.title('Stock Market Resources')
+
+st.sidebar.header("Resources")
 st.markdown(
     """
     ### Financial Data & News 
