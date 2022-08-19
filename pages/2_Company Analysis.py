@@ -4,6 +4,7 @@ import streamlit as st
 import datetime as dt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import yahoo_fin as yho
 
 snp500 = pd.read_csv("pages/Datasets/SP500.csv")
 symbols = snp500['Symbol'].sort_values().tolist()        
@@ -92,6 +93,8 @@ if(infoType == 'Fundamental'):
     
     marketDF = pd.DataFrame(data=marketInfo, index=[0])
     st.table(marketDF)
+    income_st = stock.quarterly_balance_sheet
+    st.table(income_st)
 else:
     def calcMovingAverage(data, size):
         df = data.copy()
