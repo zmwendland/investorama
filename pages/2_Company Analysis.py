@@ -93,7 +93,8 @@ if(infoType == 'Fundamental'):
     
     marketDF = pd.DataFrame(data=marketInfo, index=[0])
     st.table(marketDF)
-    income_st = stock.quarterly_balance_sheet
+    st.subheader('**Income Statement**')
+    income_st = stock.get_financials()
     st.table(income_st)
 else:
     def calcMovingAverage(data, size):
