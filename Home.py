@@ -58,11 +58,9 @@ st.markdown(
     """
     Investorama is a personal project designed to provide
     stock market data & information. The home page includes daily
-    news related to global macroeconomic issues, as well as links
-    to important financial websites and learning resourdes. The sidebar 
-    contains a stock screener, correlation matrix tool, live major
-    commodity quotes and stock quotes, and a stock specific data 
-    tool.
+    live US index quotes as well as futures quotes. The sidebar 
+    contains a stock screener, correlation matrix tool, and a
+    company specific data analysis tool.
     ### Key Quotes
     """
     )
@@ -77,6 +75,7 @@ col5.metric(label='',value=round(dow,2),delta=dow_pct)
 col6.metric(label='',value=round(qqq,2),delta=qqq_pct)
 
 col7,col8,col9 = st.columns(3)
+col6.subheader('**10-Year**')
 col6.metric(label='',value=round(ten_yr,2),delta=ten_pct)
 
 if mkt_time < '9:30AM' or mkt_time > '4:00PM':
