@@ -22,22 +22,22 @@ ten_yr = stock_info.get_live_price('^tnx')
 
 spx_yst = stock_info.get_data('^gspc',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
 spx_yesterday = pd.DataFrame(spx_yst).reset_index()
-spx_yst_final = spx_yesterday['open'][0]
+spx_yst_final = spx_yesterday['close'][0]
 spx_pct = str(round((spx/spx_yst_final-1)*100,2))+'%'
 
 dow_yst = stock_info.get_data('^dji',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
 dow_yesterday = pd.DataFrame(dow_yst).reset_index()
-dow_yst_final = dow_yesterday['open'][0]
+dow_yst_final = dow_yesterday['close'][0]
 dow_pct = str(round((dow/dow_yst_final-1)*100,2))+'%'
 
 qqq_yst = stock_info.get_data('^ixic',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
 qqq_yesterday = pd.DataFrame(qqq_yst).reset_index()
-qqq_yst_final = qqq_yesterday['open'][0]
+qqq_yst_final = qqq_yesterday['close'][0]
 qqq_pct = str(round((qqq/qqq_yst_final-1)*100,2))+'%'
 
 ten_yr_yst = stock_info.get_data('^tnx',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
 ten_yesterday = pd.DataFrame(ten_yr_yst).reset_index()
-ten_yst_final = ten_yesterday['open'][0]
+ten_yst_final = ten_yesterday['close'][0]
 ten_pct = str(round((ten_yr/ten_yst_final-1)*100,2))+'%'
 
 
