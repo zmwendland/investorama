@@ -1,7 +1,6 @@
 import streamlit as st
 import Home
 
-st.set_page_config(page_title="Resources", page_icon="📈")
 
 # st.title('Stock Market Resources')
 
