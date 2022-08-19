@@ -85,7 +85,7 @@ if(infoType == 'Fundamental'):
             "Regular Market Price (USD)": info['regularMarketPrice'],
             'Bid Size': info['bidSize'],
             'Ask Size': info['askSize'],
-            "Share Short": info['sharesShort'],
+            "Share Short": str(round(info['sharesShort']/info['floatShares'],2))+'%',
             'Short Ratio': info['shortRatio'],
             'Share Outstanding': info['sharesOutstanding']
     
