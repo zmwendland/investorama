@@ -1,6 +1,6 @@
 pandas
 plotly==4.14.3
-yfinance==0.1.55
+yfinance==0.1.74
 yahoo_fin
 datetime
 streamlit==1.12.0
