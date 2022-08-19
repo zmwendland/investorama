@@ -5,7 +5,7 @@ import datetime as dt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-snp500 = pd.read_csv("Datasets/SP500.csv")
+snp500 = pd.read_csv("pages/Datasets/SP500.csv")
 symbols = snp500['Symbol'].sort_values().tolist()        
 
 ticker = st.sidebar.selectbox(
@@ -121,7 +121,7 @@ else:
     st.title('Technical Indicators')
     st.subheader('Moving Average')
     
-    coMA1, coMA2 = st.beta_columns(2)
+    coMA1, coMA2 = st.columns(2)
     
     with coMA1:
         numYearMA = st.number_input('Insert period (Year): ', min_value=1, max_value=10, value=2, key=0)    
@@ -244,7 +244,7 @@ else:
     st.plotly_chart(figMACD, use_container_width=True)
     
     st.subheader('Bollinger Band')
-    coBoll1, coBoll2 = st.beta_columns(2)
+    coBoll1, coBoll2 = st.columns(2)
     with coBoll1:
         numYearBoll = st.number_input('Insert period (Year): ', min_value=1, max_value=10, value=2, key=6) 
         
