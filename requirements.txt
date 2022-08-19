@@ -1,4 +1,6 @@
 pandas
+plotly
+yfinance
 yahoo_fin
 datetime
 streamlit==1.12.0
