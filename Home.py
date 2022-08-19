@@ -78,9 +78,10 @@ col7,col8,col9 = st.columns(3)
 col6.subheader('**10-Year**')
 col6.metric(label='',value=round(ten_yr,2),delta=ten_pct)
 
-if mkt_time < '9:30AM' or mkt_time > '4:00PM':
-    st.subheader('Futures')
-    st.dataframe(futures)
-else:
-    st.dataframe(stock_info.get_day_gainers(20))
+st.subheader('Futures')
+st.dataframe(futures)
+st.subheader('Top 20 Gainers')
+st.dataframe(stock_info.get_day_gainers(20))
+st.subheader('Top 20 losers')
+st.dataframe(stock_info.get_day_losers(20))
 
