@@ -26,4 +26,5 @@ countries = [x.title() for x in countries]
 
 box = st.selectbox('Choose Country',options=countries)
 if box:
+    df['zone'] = box
     st.write(df.head(14))
