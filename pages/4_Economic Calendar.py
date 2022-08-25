@@ -61,7 +61,7 @@ else:
                                       'Euro Zone','United Kingdom','France','South Korea'])]
         df = df.sort_values(by=['zone','date'])
         country = str(box)
-        df = df.loc(df['zone'].isin(country))
+        df = df.loc(df['zone'].isin(df))
         st.write(df)
 
 
