@@ -8,11 +8,16 @@ Created on Mon Aug  8 20:40:57 2022
 import pandas as pd
 import numpy as np
 import pandas_datareader as web
-import matplotlib.pyplot as plt
 from datetime import datetime
 import seaborn
 import streamlit as st
+import matplotlib.pyplot as plt
 
+def heatmaps():
+    seaborn.heatmap(corr_df, cmap='RdYlGn', vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5)
+    plt.title('Correlation 2021-Present')
+    plt.yticks(rotation=0) 
+    plt.xticks(rotation=90)
 
 stonksForm = st.form('Enter Ticker Symbol to Correlate')
 stonk = stonksForm.text_input('Symbol','AAPL')
@@ -40,10 +45,7 @@ if submit_button:
     mask = np.zeros_like(corr_df)
     mask[np.triu_indices_from(mask)] = True
     
-    seaborn.heatmap(corr_df, cmap='RdYlGn', vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5)
-    plt.title('Correlation YTD')
-    plt.yticks(rotation=0) 
-    plt.xticks(rotation=90) 
+    st.write(heatmaps())
 else: 
     st.subheader('Correlate!')
 
