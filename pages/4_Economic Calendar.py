@@ -16,7 +16,7 @@ st.markdown('Dates are dd/mm/yyyy.')
 
 start = dt.now()
 start2 = start.strftime('%d/%m/%Y')
-end = dt.now() + timedelta(days=8)
+end = dt.now() + timedelta(days=4)
 end2 = end.strftime('%d/%m/%Y')
 # date_range = range(int(str(star)),end)
 
