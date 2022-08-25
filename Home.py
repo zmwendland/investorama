@@ -52,10 +52,6 @@ oil_yesterday = pd.DataFrame(oil_yst).reset_index()
 oil_yst_final = oil_yesterday['close'][0]
 oil_pct = str(round((oil/oil_yst_final-1)*100,2))+'%'
 
-
-
-
-
 futures = stock_info.get_futures()
 futures.reset_index()
 futures = futures[0:8]
@@ -101,4 +97,7 @@ st.subheader('Top 20 Gainers')
 st.dataframe(stock_info.get_day_gainers(20))
 st.subheader('Top 20 losers')
 st.dataframe(stock_info.get_day_losers(20))
+st.subheader('Top 20 Most Active')
+st.table(stock_info.get_day_most_active(20))
+
 
