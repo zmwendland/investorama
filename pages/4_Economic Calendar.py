@@ -40,8 +40,6 @@ if (choice=='All'):
 elif (choice=='USA'):
     countries = [x.title() for x in countries]
     countries.sort()    
-    box = st.selectbox('Choose Country',options=countries)
-    countryForm = st.form('Choose Country')
     submit = countryForm.form_submit_button("Go")
     if submit:
         start = dt.now()
