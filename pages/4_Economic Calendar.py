@@ -46,6 +46,6 @@ else:
     if submit:
         country = str(box)
         df = df.loc(df['zone'].isin(country))
-        
+        st.dateframe(df)
 
 
