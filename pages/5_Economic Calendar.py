@@ -20,12 +20,16 @@ data = ip.economic_calendar(from_date=str(start),to_date=str(end))
 
 df = pd.DataFrame(data)
 
+choice = st.radio('Choose an Info Type',
+         ('All','Specific Country'))
 
-countries = list(df.zone.unique())
-countries = [x.title() for x in countries]
-countries.sort()
-
-st.selectbox('Choose Country',options=countries)
-countryForm = st.form('Choose Country')
-submit = countryForm.form_submit_button("Go")
-
+if (choice=='All'):
+    st.dataframe(df.head(14))
+else:
+    st.subheader('Under Construction')
+    countries = list(df.zone.unique())
+    countries = [x.title() for x in countries]
+    countries.sort()    
+    box = st.selectbox('Choose Country',options=countries)
+    countryForm = st.form('Choose Country')
+    submit = countryForm.form_submit_button("Go")
