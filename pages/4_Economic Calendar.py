@@ -16,9 +16,10 @@ st.markdown('Dates are dd/mm/yyyy.')
 
 start = dt.now()
 start2 = start.strftime('%d/%m/%Y')
-end = dt.now() + timedelta(days=4)
+end = dt.now() + timedelta(days=8)
 end2 = end.strftime('%d/%m/%Y')
 # date_range = range(int(str(star)),end)
+
 
 data = ip.economic_calendar(from_date=start2,to_date=end2)
 
@@ -28,7 +29,11 @@ df['zone'] = [x.title() for x in df['zone']]
 
 # df['date'] = df['date'].strftime('%m-%d-%Y')
 df = df.loc[df['zone']=='United States']
+df = df.loc[df['importance']!='low']
+
 df = df.sort_values(by=['date'])
+
+
 st.dataframe(df)
 
 
