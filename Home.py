@@ -9,8 +9,6 @@ st.set_page_config(
     page_icon="📈",
 )
 
-components.html("""<img src='https://www.marketplace.org/wp-content/uploads/2019/09/stockmarket.jpg?fit=2880%2C1621'>""",width=100%,)
-
 st.sidebar.success('Navigation')
 
 yesterday = date.today() - timedelta(days=1)
