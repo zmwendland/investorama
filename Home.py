@@ -2,7 +2,11 @@ import pandas as pd
 import streamlit as st
 from datetime import  date, timedelta
 from yahoo_fin import stock_info 
+import streamlit.components.v1 as components
 
+components.html("""
+<img src='https://www.marketplace.org/wp-content/uploads/2019/09/stockmarket.jpg?fit=2880%2C1621' width=100% height = 300>
+""")
 
 st.set_page_config(
     page_title="Investorama",
