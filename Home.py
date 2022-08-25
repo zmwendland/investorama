@@ -98,6 +98,6 @@ st.dataframe(stock_info.get_day_gainers(20))
 st.subheader('Top 20 losers')
 st.dataframe(stock_info.get_day_losers(20))
 st.subheader('Top 20 Most Active')
-st.table(stock_info.get_day_most_active(20))
+st.dataframe(stock_info.get_day_most_active(20))
 
 
