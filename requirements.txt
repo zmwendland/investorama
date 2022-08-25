@@ -8,3 +8,4 @@ pandas_datareader
 numpy
 seaborn
 matplotlib
+investpy
