@@ -7,3 +7,4 @@ streamlit==1.12.0
 pandas_datareader
 numpy
 seaborn
+matplotlib
