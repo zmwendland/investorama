@@ -50,9 +50,8 @@ elif (choice=='USA'):
     df = pd.DataFrame(data)
     df = df.drop(columns=['id'])
     df['zone'] = [x.title() for x in df['zone']]
-    df = df.loc[df['zone'].isin(['United States'])]
     df['date'] = [x.strftime('%m/%d/%Y') for x in df['date']]
-    df = df.loc[df['zone'].isin([box])]
+    df = df.loc[df['zone'].isin(['United States'])]
     df = df.sort_values(by=['zone','date'])
     st.write(df)
 
