@@ -39,12 +39,8 @@ corr_df.head().reset_index()
 mask = np.zeros_like(corr_df)
 mask[np.triu_indices_from(mask)] = True
 
-def heatmaps():
-    fig = seaborn.heatmap(corr_df, cmap='RdYlGn', vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5)
-    plt.title('Correlation 2021-Present')
-    plt.yticks(rotation=0) 
-    plt.xticks(rotation=90)
-    st.pyplot(fig)
+
+
 
 submit_button = stonksForm.form_submit_button('Correlate!')
 if submit_button:
@@ -70,7 +66,11 @@ if submit_button:
     mask = np.zeros_like(corr_df)
     mask[np.triu_indices_from(mask)] = True
     
-    st.write(heatmaps())
+    fig = seaborn.heatmap(corr_df, cmap='RdYlGn', vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5)
+    st.title('Correlation 2021-Present')
+    plt.yticks(rotation=0) 
+    plt.xticks(rotation=90)
+    st.pyplot(fig)
 else: 
     st.subheader('Correlate!')
 
