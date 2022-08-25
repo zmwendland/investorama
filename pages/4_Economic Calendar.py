@@ -19,7 +19,7 @@ end = end.strftime('%d/%m/%Y')
 data = ip.economic_calendar(from_date=str(start),to_date=str(end))
 
 df = pd.DataFrame(data)
-df.drop(columns=['id'])
+df = df.drop(columns=['id'])
 df['zone'] = [x.title() for x in df['zone']]
 
 choice = st.radio('Choose an Info Type',
