@@ -60,8 +60,8 @@ else:
         df = df.loc[df['zone'].isin(['United States','Germany','Canada','Japan','Taiwan',
                                       'Euro Zone','United Kingdom','France','South Korea'])]
         df = df.sort_values(by=['zone','date'])
-        country = str(box)
-        df = df.loc(df['zone'].isin(df))
-        st.write(df)
+        
+        
+        st.write(box)
 
 
