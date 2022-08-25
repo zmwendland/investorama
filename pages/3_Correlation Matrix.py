@@ -68,10 +68,14 @@ if submit_button:
     
     fig, ax = plt.subplots()
     st.title('Correlation 2021-Present')
-    sns.heatmap(corr_df, cmap='RdYlGn', annot=True,vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5,ax=ax)
+    sns.heatmap(corr_df, cmap='RdYlGn', annot=True, fmt='.2f',vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5,ax=ax)
     # plt.yticks(rotation=0) 
     # plt.xticks(rotation=90)
     
     st.write(fig)
 else: 
     st.subheader('Correlate!')
+
+
+
+
