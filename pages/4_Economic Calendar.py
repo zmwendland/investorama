@@ -13,7 +13,7 @@ import streamlit as st
 
 start = dt.now()
 start = start.strftime('%d/%m/%Y')
-end = dt.now() + timedelta(days=365)
+end = dt.now() + timedelta(days=14)
 end = end.strftime('%d/%m/%Y')
 
 data = ip.economic_calendar(from_date=str(start),to_date=str(end))
@@ -26,8 +26,7 @@ choice = st.radio('Choose an Info Type',
          ('All','Specific Country'))
 
 if (choice=='All'):
-    new_df = df[(df['date']<str(dt.now())) | (df['date']>str(dt.now()+timedelta(days=10)))]
-    st.dataframe(new_df)
+    st.dataframe(df)
 else:
     st.subheader('Under Construction')
     countries = list(df.zone.unique())
