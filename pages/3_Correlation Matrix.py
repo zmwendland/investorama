@@ -68,8 +68,8 @@ if submit_button:
     
     fig = seaborn.heatmap(corr_df, cmap='RdYlGn', vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5)
     st.title('Correlation 2021-Present')
-    plt.yticks(rotation=0) 
-    plt.xticks(rotation=90)
+    # plt.yticks(rotation=0) 
+    # plt.xticks(rotation=90)
     st.pyplot(fig)
 else: 
     st.subheader('Correlate!')
