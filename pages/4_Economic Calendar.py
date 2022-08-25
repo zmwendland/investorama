@@ -57,11 +57,9 @@ else:
         df = pd.DataFrame(data)
         df = df.drop(columns=['id'])
         df['zone'] = [x.title() for x in df['zone']]
-        df = df.loc[df['zone'].isin(['United States','Germany','Canada','Japan','Taiwan',
-                                      'Euro Zone','United Kingdom','France','South Korea'])]
+        df = df.loc[df['zone'].isin([box])]
         df = df.sort_values(by=['zone','date'])
         
-        
-        st.write(box)
+        st.write(df)
 
 
