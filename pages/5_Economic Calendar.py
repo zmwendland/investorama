@@ -25,11 +25,7 @@ countries = list(df.zone.unique())
 countries = [x.title() for x in countries]
 countries.sort()
 
+st.selectbox('Choose Country',options=countries)
 countryForm = st.form('Choose Country')
-box = st.selectbox('Choose Country',options=countries)
 submit = countryForm.form_submit_button("Go")
 
-if submit:
-    new_df = df[df['zone']==str(box)]
-    print(new_df)
-    st.write(df.head(14))
