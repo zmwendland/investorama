@@ -5,7 +5,7 @@ Created on Thu Aug 25 02:50:02 2022
 @author: Zach
 """
 
-import investpy as ip
+import investpy
 from datetime import timedelta
 from datetime import datetime as dt
 import pandas as pd
@@ -16,7 +16,7 @@ start = start.strftime('%d/%m/%Y')
 end = dt.now() + timedelta(days=365)
 end = end.strftime('%d/%m/%Y')
 
-data = ip.economic_calendar(from_date=str(start),to_date=str(end))
+data = investpy.economic_calendar(from_date=str(start),to_date=str(end))
 
 df = pd.DataFrame(data)
 
