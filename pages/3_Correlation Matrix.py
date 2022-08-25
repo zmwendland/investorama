@@ -39,9 +39,6 @@ corr_df.head().reset_index()
 mask = np.zeros_like(corr_df)
 mask[np.triu_indices_from(mask)] = True
 
-
-
-
 submit_button = stonksForm.form_submit_button('Correlate!')
 if submit_button:
     start = datetime(2021,1,1)
@@ -74,8 +71,4 @@ if submit_button:
     
     st.write(fig)
 else: 
-    st.subheader('Correlate!')
-
-
-
-
+    st.subheader('Matrix Appears Here')
