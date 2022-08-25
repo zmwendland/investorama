@@ -8,6 +8,7 @@ Created on Mon Aug  8 20:40:57 2022
 import pandas as pd
 import numpy as np
 import pandas_datareader as web
+import matplotlib.pyplot as plt
 from datetime import datetime
 import seaborn
 import streamlit as st
