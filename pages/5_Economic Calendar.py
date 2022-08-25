@@ -23,6 +23,8 @@ df = pd.DataFrame(data)
 
 countries = list(df.zone.unique())
 countries = [x.title() for x in countries]
+countries.sort()
+
 
 box = st.selectbox('Choose Country',options=countries)
 if box:
