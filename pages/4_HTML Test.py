@@ -8,5 +8,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 st.subheader('TESTING')
 components.html("""
-<img src='https://www.marketplace.org/wp-content/uploads/2019/09/stockmarket.jpg?fit=2880%2C1621' width=100% height = 300>
+                    <div>
+                      <img src='https://www.marketplace.org/wp-content/uploads/2019/09/stockmarket.jpg?fit=2880%2C1621' width=100% height = 300>
+                     </div>
 """)
