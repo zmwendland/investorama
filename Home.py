@@ -40,6 +40,7 @@ qqq_pct = str(round((qqq/qqq_yst_final-1)*100,2))+'%'
 ten_yr_yst = stock_info.get_data('^tnx',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
 ten_yesterday = pd.DataFrame(ten_yr_yst).reset_index()
 ten_yst_final = ten_yesterday['close'][0]
+ten_yst_price = str(ten_yr)+'%'
 ten_pct = str(round((ten_yr/ten_yst_final-1)*100,2))+'%'
 
 gold_yst = stock_info.get_data('GC=F',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
@@ -73,22 +74,21 @@ st.markdown(
     ### Key Quotes
     """
     )
-col_1,col_2,col_3 = st.columns(3)
-col_1.subheader('**S&P 500**')
-col_2.subheader('**DOW**')
-col_3.subheader('**Nasdaq**')
 
 col4,col5,col6 = st.columns(3)
+col4.subheader('**S&P 500**')
 col4.metric(label='',value=round(spx,2),delta=spx_pct)
+col5.subheader('**DOW**')
 col5.metric(label='',value=round(dow,2),delta=dow_pct)
+col6.subheader('**Nasdaq**')
 col6.metric(label='',value=round(qqq,2),delta=qqq_pct)
 
 col7,col8,col9 = st.columns(3)
-col7.subheader('**10-Year**')
-col7.metric(label='',value=round(ten_yr,2),delta=ten_pct)
+col7.subheader('**US 10-Year Bond**')
+col7.metric(label='',value=ten_yst_price,delta=ten_pct)
 col8.subheader('**Gold**')
 col8.metric(label='',value=round(gold,2),delta=gold_pct)
-col9.subheader('**Crude Oil**')
+col9.subheader('**WTI Crude Oil**')
 col9.metric(label='',value=round(oil,2),delta=oil_pct)
 
 st.subheader('Futures')
@@ -97,6 +97,5 @@ st.subheader('Top 20 Gainers')
 st.dataframe(stock_info.get_day_gainers(20))
 st.subheader('Top 20 losers')
 st.dataframe(stock_info.get_day_losers(20))
-
-
-
+# st.subheader('Top 20 Most Active')
+# st.dataframe(stock_info.get_day_most_active(20))
