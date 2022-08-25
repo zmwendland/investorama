@@ -3,7 +3,7 @@ Investorama is a personal project designed to provide stock market data & inform
 
 App URL: https://zmwendland-investorama-home-x3plwj.streamlitapp.com/
 
-#Future Updates
+# Future Updates
 - Converting #s in DFs on to "mm"
 - Lots of work on Company Analysis tab
 - Adding BSM Options pricing tool 
