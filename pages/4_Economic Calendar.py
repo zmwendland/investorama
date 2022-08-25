@@ -38,8 +38,6 @@ choice = st.radio('Choose an Info Type',
 if (choice=='All'):
     st.write(df)
 elif (choice=='USA'):
-    countries = [x.title() for x in countries]
-    countries.sort() 
     start = dt.now()
     start2 = start.strftime('%d/%m/%Y')
     end = dt.now() + timedelta(days=14)
