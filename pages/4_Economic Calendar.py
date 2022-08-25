@@ -47,6 +47,8 @@ elif (choice=='USA'):
     
     df = pd.DataFrame(data)
     df = df.drop(columns=['id'])
+    df['date'] = pd.to_datetime(df.date)
+    df['date'] = df['date'].dt.strftime('%m-%d-%Y')
     df['zone'] = [x.title() for x in df['zone']]
     df = df.loc[df['zone'].isin(['United States'])]
     df = df.sort_values(by=['zone','date'])
