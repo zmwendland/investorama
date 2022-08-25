@@ -40,7 +40,6 @@ if (choice=='All'):
 elif (choice=='USA'):
     countries = [x.title() for x in countries]
     countries.sort()    
-    submit = countryForm.form_submit_button("Go")
     if submit:
         start = dt.now()
         start2 = start.strftime('%d/%m/%Y')
