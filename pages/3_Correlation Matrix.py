@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import pandas_datareader as web
 from datetime import datetime
-import seaborn
+import seaborn as sns
 import streamlit as st
 import matplotlib.pyplot as plt
 
@@ -66,11 +66,13 @@ if submit_button:
     mask = np.zeros_like(corr_df)
     mask[np.triu_indices_from(mask)] = True
     
-    fig = seaborn.heatmap(corr_df, cmap='RdYlGn', vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5)
+    fig, ax = plt.subplots()
     st.title('Correlation 2021-Present')
+    sns.heatmap(corr_df, cmap='RdYlGn', vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.5,ax=ax)
     # plt.yticks(rotation=0) 
     # plt.xticks(rotation=90)
-    st.pyplot(fig)
+    
+    st.write(fig)
 else: 
     st.subheader('Correlate!')
 
