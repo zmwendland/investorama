@@ -22,7 +22,7 @@ start2 = start.strftime('%d/%m/%Y')
 end = dt.now() + timedelta(days=14)
 end2 = end.strftime('%d/%m/%Y')
 
-data = ip.economic_calendar(from_date=str(start2),to_date=str(end2))
+data = ip.economic_calendar(from_date=start2,to_date=end2)
 
 df = pd.DataFrame(data)
 df = df.drop(columns=['id'])
