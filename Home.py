@@ -18,7 +18,7 @@ yesterday.strftime('%m%d%y')
 spx = stock_info.get_live_price('^gspc')
 dow = stock_info.get_live_price('^dji')
 qqq = stock_info.get_live_price('^ixic')
-ten_yr = stock_info.get_live_price('^tnx')
+ten_yr = round(stock_info.get_live_price('^tnx'),2)
 gold = stock_info.get_live_price('GC=F')
 oil = stock_info.get_live_price('CL=F')
 
