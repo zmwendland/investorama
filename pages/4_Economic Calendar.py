@@ -27,6 +27,7 @@ choice = st.radio('Choose an Info Type',
 
 if (choice=='All'):
     new_df = df.loc[df['date']<str(dt.now()+timedelta(days=10))]
+    new_df = df.loc[df['date']>str(dt.now()+timedelta(days=10))]
     st.dataframe(new_df)
 else:
     st.subheader('Under Construction')
