@@ -26,7 +26,8 @@ choice = st.radio('Choose an Info Type',
          ('All','Specific Country'))
 
 if (choice=='All'):
-    st.dataframe(df.head(14))
+    new_df = df.loc[df['date']<str(dt.now()+timedelta(days=10))]
+    
 else:
     st.subheader('Under Construction')
     countries = list(df.zone.unique())
