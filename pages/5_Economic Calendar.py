@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Aug 25 02:50:02 2022
+
+@author: Zach
+"""
 
 import investpy as ip
 from datetime import timedelta
@@ -24,5 +30,6 @@ box = st.selectbox('Choose Country',options=countries)
 submit = countryForm.form_submit_button("Go")
 
 if submit:
-    new_df = df[df['zone']==box]
+    new_df = df[df['zone']==str(box)]
+    print(new_df)
     st.write(df.head(14))
