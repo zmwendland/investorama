@@ -12,10 +12,39 @@ st.set_page_config(
 
 st.sidebar.success('Navigation')
 
+st.title('Welcome to Investorama!')
+
+st.markdown(
+    """
+    Investorama is a personal project designed to provide
+    stock market data & information. The home page includes daily
+    live US index quotes as well as futures quotes. The sidebar 
+    contains a stock screener, correlation matrix tool, and a
+    company specific data analysis tool.
+    ### Key Quotes
+    """
+    )
+
 yesterday = date.today() - timedelta(days=1)
 yesterday.strftime('%m%d%y')
 
-
+st.subheader('Single Stock Daily Performance')
+stonkForm = st.form("Enter Ticker")
+inputTicker = stonkForm.text_input('Ticker Symbol',value='AAPL')
+submit_button = stonkForm.form_submit_button("GO")
+if submit_button:
+    start = dt.datetime.now()
+    name = si.get_data(ticker)
+    name = list(name['ticker'])
+    stock = si.get_live_price(ticker)
+    stock = round(stock,2)
+    
+    last = si.get_data(ticker,start_date=start)
+    last = list(last['open'])
+    
+    change = stock/round(last[0],2)-1
+    st.metric(name, value=stock, delta=change)
+    
 spx = stock_info.get_live_price('^gspc')
 dow = stock_info.get_live_price('^dji')
 qqq = stock_info.get_live_price('^ixic')
@@ -55,29 +84,14 @@ oil_yst_final = oil_yesterday['close'][0]
 oil_pct = str(round((oil/oil_yst_final-1)*100,2))+'%'
 
 futures = stock_info.get_futures()
-futures = pd.DataFrame(futures)
-futures['Name'] = futures.Name.str.split("\s*' '\*")
 futures.reset_index()
 futures = futures[0:8]
-
 
 mkt_time = str(futures['Market Time'][0])
 # mkt_time = mkt_time.replace('AM','')
 # mkt_time = mkt_time.replace('PM', '')
 mkt_time = mkt_time.replace('EDT', '')
 # futures.rename(columns={'Unnamed: 7':'Volume'})
-st.title('Welcome to Investorama!')
-
-st.markdown(
-    """
-    Investorama is a personal project designed to provide
-    stock market data & information. The home page includes daily
-    live US index quotes as well as futures quotes. The sidebar 
-    contains a stock screener, correlation matrix tool, and a
-    company specific data analysis tool.
-    ### Key Quotes
-    """
-    )
 
 col4,col5,col6 = st.columns(3)
 col4.subheader('**S&P 500**')
