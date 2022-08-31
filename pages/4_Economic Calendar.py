@@ -1,39 +1,33 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Aug 25 02:50:02 2022
-
-@author: Zach
-"""
-
-import investpy as ip
-from datetime import timedelta
-from datetime import datetime as dt
+import requests as r 
+from bs4 import BeautifulSoup
+import prettify as pt
 import pandas as pd
 import streamlit as st
 
-st.subheader('USA Economic Calendar')
-st.markdown('Dates are dd/mm/yyyy.')
+url = 'https://www.marketwatch.com/economy-politics/calendar'
+file = r.get(url)
+soup = BeautifulSoup(file.text,'lxml')
+cont = soup.find('tbody')
+cont2 = soup.find('table')
 
-start = dt.now()
-start2 = start.strftime('%d/%m/%Y')
-end = dt.now() + timedelta(days=4)
-end2 = end.strftime('%d/%m/%Y')
-# date_range = range(int(str(star)),end)
+header = []
+for x in cont2.find_all('th'):
+    y = x.text.strip()
+    header.append(y)
+    
 
+days = []
+for i in cont.find_all('b'):
+    z = i.text.strip()
+    days.append(z)
 
-data = ip.economic_calendar(from_date=start2,to_date=end2)
-
-df = pd.DataFrame(data)
-df = df.drop(columns=['id'])
-df['zone'] = [x.title() for x in df['zone']]
-
-# df['date'] = df['date'].strftime('%m-%d-%Y')
-df = df.loc[df['zone']=='United States']
-df = df.loc[df['importance']!='low']
-
-df = df.sort_values(by=['date'])
+cal = pd.DataFrame(columns=header) 
 
 
-st.dataframe(df)
+for x in cont.find_all('tr'):
+    data = x.find_all('td')
+    row = [y.text for y in data]
+    length = len(cal)
+    cal.loc[length] = row
 
-
+st.dataframe(cal)
