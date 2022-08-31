@@ -28,15 +28,14 @@ stonkForm = st.form("Enter Ticker")
 inputTicker = stonkForm.text_input('Ticker Symbol',value=ticker)
 submit_button = stonkForm.form_submit_button("GO")
 if submit_button:
-    name = stock_info.get_data(inputTicker)
+    name = stock_info.get_data(ticker)
     name = list(name['ticker'])
     name = name[0]
-    stock = stock_info.get_live_price(inputTicker)
+    stock = stock_info.get_live_price(ticker)
     stock = round(stock,2)
-    last = stock_info.get_data(inputTicker,start_date=start)
+    last = stock_info.get_data(ticker,start_date=start)
     last = list(last['open'])
     change = stock/round(last[0],2)-1
-elif IndexError():
-    st.subheader('Not a valid ticker')
+
 else:
     st.subheader('Press GO')
