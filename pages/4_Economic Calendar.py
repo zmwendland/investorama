@@ -29,4 +29,4 @@ for x in cont.find_all('tr'):
     length = len(cal)
     cal.loc[length] = row
 
-st.dataframe(cal)
+st.table(cal)
