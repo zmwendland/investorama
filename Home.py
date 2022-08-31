@@ -3,6 +3,7 @@ import streamlit as st
 from datetime import  date, timedelta
 import datetime as dt 
 from yahoo_fin import stock_info 
+from yahoo_fin import stock_info as si
 import streamlit.components.v1 as components
 
 
