@@ -4,6 +4,7 @@ from datetime import  date, timedelta
 from yahoo_fin import stock_info 
 import streamlit.components.v1 as components
 
+
 st.set_page_config(
     page_title="Investorama",
     page_icon="📈",
@@ -54,8 +55,11 @@ oil_yst_final = oil_yesterday['close'][0]
 oil_pct = str(round((oil/oil_yst_final-1)*100,2))+'%'
 
 futures = stock_info.get_futures()
+futures = pd.DataFrame(futures)
+futures['Name'] = futures.Name.str.split("\s*' '\*")
 futures.reset_index()
 futures = futures[0:8]
+
 
 mkt_time = str(futures['Market Time'][0])
 # mkt_time = mkt_time.replace('AM','')
@@ -92,10 +96,10 @@ col9.subheader('**WTI Crude Oil**')
 col9.metric(label='',value=round(oil,2),delta=oil_pct)
 
 st.subheader('Futures')
-st.table(futures)
+st.dataframe(futures)
 st.subheader('Top 20 Gainers')
-st.table(stock_info.get_day_gainers(20))
+st.dataframe(stock_info.get_day_gainers(20))
 st.subheader('Top 20 losers')
-st.table(stock_info.get_day_losers(20))
+st.dataframe(stock_info.get_day_losers(20))
 # st.subheader('Top 20 Most Active')
 # st.dataframe(stock_info.get_day_most_active(20))
