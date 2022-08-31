@@ -3,7 +3,6 @@ import streamlit as st
 from datetime import  date, timedelta
 import datetime as dt 
 from yahoo_fin import stock_info 
-from yahoo_fin import stock_info as si
 import streamlit.components.v1 as components
 
 
@@ -38,7 +37,7 @@ if submit_button:
     start = dt.datetime.now()
     name = si.get_data(ticker)
     name = list(name['ticker'])
-    stock = si.get_live_price(ticker)
+    stock = stock_info.get_live_price(ticker)
     stock = round(stock,2)
     
     last = si.get_data(ticker,start_date=start)
