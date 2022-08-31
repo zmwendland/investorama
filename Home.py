@@ -47,7 +47,7 @@ stonkForm = st.form("Enter Ticker")
 inputTicker = stonkForm.text_input('Ticker Symbol',value='AAPL')
 submit_button = stonkForm.form_submit_button("GO")
 if submit_button:
-    st.subheader(single_stock())
+    st.metric(single_stock())
 else:
     
    
