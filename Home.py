@@ -4,19 +4,19 @@ from datetime import  date, timedelta
 from yahoo_fin import stock_info 
 import streamlit.components.v1 as components
 
-    st.set_page_config(
-        page_title="Investorama",
-        page_icon="📈",
-    )
+st.set_page_config(
+    page_title="Investorama",
+    page_icon="📈",
+)
 
-    st.sidebar.success('Navigation')
+st.sidebar.success('Navigation')
 
-    yesterday = date.today() - timedelta(days=1)
-    yesterday.strftime('%m%d%y')
+yesterday = date.today() - timedelta(days=1)
+yesterday.strftime('%m%d%y')
 
 
-    spx = stock_info.get_live_price('^gspc')
-    dow = stock_info.get_live_price('^dji')
+spx = stock_info.get_live_price('^gspc')
+dow = stock_info.get_live_price('^dji')
 qqq = stock_info.get_live_price('^ixic')
 ten_yr = round(stock_info.get_live_price('^tnx'),2)
 gold = stock_info.get_live_price('GC=F')
