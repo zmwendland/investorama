@@ -30,6 +30,7 @@ def single_stock():
     start = dt.datetime.now()
     name = stock_info.get_data(inputTicker)
     name = list(name['ticker'])
+    name = name[0]
     stock = stock_info.get_live_price(inputTicker)
     stock = round(stock,2)
     last = stock_info.get_data(inputTicker,start_date=start)
