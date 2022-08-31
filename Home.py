@@ -36,7 +36,7 @@ def single_stock():
     last = list(last['open'])
     change = stock/round(last[0],2)-1
     
-    return st.metric(label=name, value=stock, delta=change)
+    return name, stock, last
 
 yesterday = date.today() - timedelta(days=1)
 yesterday.strftime('%m%d%y')
@@ -47,6 +47,7 @@ inputTicker = stonkForm.text_input('Ticker Symbol',value='AAPL')
 submit_button = stonkForm.form_submit_button("GO")
 if submit_button:
     single_stock()
+    
    
     
 spx = stock_info.get_live_price('^gspc')
