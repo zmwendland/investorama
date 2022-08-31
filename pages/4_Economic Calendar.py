@@ -1,6 +1,5 @@
 import requests as r 
 from bs4 import BeautifulSoup
-import prettify as pt
 import pandas as pd
 import streamlit as st
 
