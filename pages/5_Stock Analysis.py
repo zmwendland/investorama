@@ -28,6 +28,7 @@ stonkForm = st.form("Enter Ticker")
 inputTicker = stonkForm.text_input('Ticker Symbol',value=ticker)
 submit_button = stonkForm.form_submit_button("GO")
 if submit_button:
+    ticker = ticker
     name = stock_info.get_data(ticker)
     name = list(name['ticker'])
     name = name[0]
