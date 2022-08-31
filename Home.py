@@ -35,15 +35,14 @@ inputTicker = stonkForm.text_input('Ticker Symbol',value='AAPL')
 submit_button = stonkForm.form_submit_button("GO")
 if submit_button:
     start = dt.datetime.now()
-    name = si.get_data(ticker)
+    name = stock_info.get_data(ticker)
     name = list(name['ticker'])
     stock = stock_info.get_live_price(ticker)
     stock = round(stock,2)
-    
-    last = si.get_data(ticker,start_date=start)
+    last = stock_info.get_data(ticker,start_date=start)
     last = list(last['open'])
-    
     change = stock/round(last[0],2)-1
+    
     st.metric(name, value=stock, delta=change)
     
 spx = stock_info.get_live_price('^gspc')
