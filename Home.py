@@ -43,7 +43,7 @@ if submit_button:
     last = list(last['open'])
     change = stock/round(last[0],2)-1
     
-    st.metric(name, value=stock, delta=change)
+    st.metric(label=name, value=stock, delta=change)
     
 spx = stock_info.get_live_price('^gspc')
 dow = stock_info.get_live_price('^dji')
