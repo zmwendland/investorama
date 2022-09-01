@@ -72,6 +72,16 @@ oil_yesterday = pd.DataFrame(oil_yst).reset_index()
 oil_yst_final = oil_yesterday['close'][0]
 oil_pct = str(round((oil/oil_yst_final-1)*100,2))+'%'
 
+data = [spx,dow,qqq,ten_yr,gold,oil]
+id_ind = [0,1,2,3,4,5]
+change = [spx_pct,dow_pct,qqq_pct,ten_pct,gold_pct,oil_pct]
+classes = ['SPX','DOW','QQQ','10-Yr Bond','Gold','WTI Crude Oil']
+d = {'Quote': data, '% Change': change}
+df = pd.DataFrame(d,columns=['Quote', '% Change'],index=classes'')
+df = df.round({'Quote':2})
+df['Quote'] = df['Quote'].apply(lambda x : "{:,}".format(x))
+st.write(df)
+
 futures = stock_info.get_futures()
 fdf = pd.DataFrame(futures)
 fdf = fdf.drop(columns=['Day Chart','Change','Unnamed: 7'])
