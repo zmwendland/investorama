@@ -33,7 +33,7 @@ while stock_info.get_market_status() == 'REGULAR':
         last = stock_info.get_data(ticker,start_date=start)
         last = list(last['open'])
         change = stock/round(last[0],2)-1
-        change = round(change,2)
+        change = round(change,2)*100
         change = str(change)+'%'
         st.subheader(name)
         st.metric(label='',value=stock,delta=change)
@@ -50,7 +50,7 @@ else:
         last = list(last['close'])
         last = last[0]
         last = round(last,2)
-        change = stock/close-1
+        change = (stock/close-1)*100
         change = round(change,2)
         change = str(change)+'%'
         st.subheader(name+' **Market Closed**')
