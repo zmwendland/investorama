@@ -47,7 +47,7 @@ else:
         last = stock_info.get_data(ticker,start_date=start)
         last = list(last['close'])
         last = last[0]
-        last = round(last[0],2)
+        last = round(last,2)
         change = stock/last-1
         change = round(change,2)
         change = str(change)+'%'
