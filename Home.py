@@ -70,8 +70,15 @@ oil_yst_final = oil_yesterday['close'][0]
 oil_pct = str(round((oil/oil_yst_final-1)*100,2))+'%'
 
 futures = stock_info.get_futures()
-futures.reset_index()
-futures = futures[0:19]
+fdf = pd.DataFrame(futures)
+pd.set_option('display.max_columns', None)
+fdf = fdf.rename(columns = {'Unnamed: 7':'7d Average Volume'})
+fdf = fdf.drop(columns=['Day Chart','Change'])
+fdf = fdf.round({'Last Price':2})
+fdf['Last Price']  = fdf['Last Price'].apply(lambda x : "{:,}".format(x))
+fdf['Volume']  = fdf['Volume'].apply(lambda x : "{:,}".format(x))
+fdf = fdf.round({'% Change':2})
+fdf.style.format({'% Change': '{:.2%}'})
 
 mkt_time = str(futures['Market Time'][0])
 # mkt_time = mkt_time.replace('AM','')
