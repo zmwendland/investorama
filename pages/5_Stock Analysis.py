@@ -28,6 +28,7 @@ if ticker:
     name = stock_info.get_data(ticker)
     name = list(name['ticker'])
     name = name[0]
+    name = st.subheader(name)
     stock = stock_info.get_live_price(ticker)
     stock = round(stock,2)
     last = stock_info.get_data(ticker,start_date=start)
