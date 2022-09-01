@@ -5,7 +5,7 @@ Created on Wed Aug 31 16:52:16 2022
 @author: Zach
 """
 
-# import pandas as pd
+import pandas as pd
 # import yfinance as yf
 import datetime as dt
 from datetime import  date, timedelta
@@ -13,7 +13,9 @@ from datetime import  date, timedelta
 from yahoo_fin import stock_info
 import streamlit as st
 
-ticker = ''
+symbols = pd.read_csv('symbols.csv')
+tickers = symbols['Ticker'].sort_values().tolist() 
+ticker = st.selectbox('Choose a stock',tickers)
     
 yesterday = date.today() - timedelta(days=1)
 yesterday.strftime('%m%d%y')
