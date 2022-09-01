@@ -50,7 +50,7 @@ else:
         last = list(last['close'])
         last = last[0]
         last = round(last,2)
-        change = last/close-1
+        change = stock/close-1
         change = round(change,2)
         change = str(change)+'%'
         st.subheader(name+' **Market Closed**')
