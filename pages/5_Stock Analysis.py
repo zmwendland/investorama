@@ -21,10 +21,9 @@ yesterday = date.today() - timedelta(days=1)
 yesterday.strftime('%m%d%y')
 
 st.subheader('Single Stock Daily Performance')
-stonkForm = st.form("")
 
-submit_button = stonkForm.form_submit_button("GO")
-if submit_button:
+
+if ticker:
     start = dt.datetime.now()
     name = stock_info.get_data(ticker)
     name = list(name['ticker'])
