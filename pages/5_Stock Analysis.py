@@ -22,20 +22,32 @@ yesterday.strftime('%m%d%y')
 
 st.subheader('Single Stock Daily Performance')
 
-
-if ticker:
-    start = dt.datetime.now()
-    name = stock_info.get_data(ticker)
-    name = list(name['ticker'])
-    name = name[0]
-    stock = stock_info.get_live_price(ticker)
-    stock = round(stock,2)
-    last = stock_info.get_data(ticker,start_date=start)
-    last = list(last['open'])
-    change = stock/round(last[0],2)-1
-    change = round(change,2)
-    change = str(change)+'%'
-    st.subheader(name)
-    st.metric(label='',value=stock,delta=change)
-elif KeyError():
-    st.caption('Error')
+while stock_info.get_market_status() == 'REGULAR':
+    if ticker:
+        start = dt.datetime.now()
+        name = stock_info.get_data(ticker)
+        name = list(name['ticker'])
+        name = name[0]
+        stock = stock_info.get_live_price(ticker)
+        stock = round(stock,2)
+        last = stock_info.get_data(ticker,start_date=start)
+        last = list(last['open'])
+        change = stock/round(last[0],2)-1
+        change = round(change,2)
+        change = str(change)+'%'
+        st.subheader(name)
+        st.metric(label='',value=stock,delta=change)
+else:
+        start = dt.datetime.now()
+        name = stock_info.get_data(ticker)
+        name = list(name['ticker'])
+        name = name[0]
+        stock = stock_info.get_live_price(ticker)
+        stock = round(stock,2)
+        last = stock_info.get_data(ticker,start_date=start)
+        last = list(last['open'])
+        change = stock/round(last[0],2)-1
+        change = round(change,2)
+        change = str(change)+'%'
+        st.subheader(name+'Market Closed')
+        st.metric(label='',value=stock,delta=change)
