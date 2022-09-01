@@ -43,7 +43,7 @@ else:
         name = list(name['ticker'])
         name = name[0]
         close = stock_info.get_live_price(ticker)
-        close = round(stock,2)
+        close = round(close,2)
         stock = stock_info.get_postmarket_price(ticker)
         stock = round(stock,2)
         last = stock_info.get_data(ticker,start_date=start)
