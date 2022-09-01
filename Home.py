@@ -22,11 +22,11 @@ st.markdown(
     live US index quotes as well as futures quotes. The sidebar 
     contains a stock screener, correlation matrix tool, and a
     company specific data analysis tool.
-    ### Key Quotes
     """
     )
 
 st.header('Market Status: '+stock_info.get_market_status())
+st.subheader('Key Quotes')
 
 yesterday = date.today() - timedelta(days=1)
 yesterday.strftime('%m%d%y')
