@@ -37,6 +37,5 @@ if ticker:
     change = str(change)+'%'
     st.subheader(name)
     st.metric(label='',value=stock,delta=change)
-else:
-    if KeyError(ticker):
-        st.caption('Error')
+elif KeyError():
+    st.caption('Error')
