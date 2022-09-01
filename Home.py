@@ -71,7 +71,6 @@ oil_pct = str(round((oil/oil_yst_final-1)*100,2))+'%'
 
 futures = stock_info.get_futures()
 fdf = pd.DataFrame(futures)
-pd.set_option('display.max_columns', None)
 fdf = fdf.rename(columns = {'Unnamed: 7':'7d Average Volume'})
 fdf = fdf.drop(columns=['Day Chart','Change'])
 fdf = fdf.round({'Last Price':2})
