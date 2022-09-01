@@ -15,7 +15,7 @@ import streamlit as st
 
 symbols = pd.read_csv('symbols.csv')
 tickers = symbols['Ticker'].sort_values().tolist() 
-ticker = st.selectbox('Choose a stock',tickers)
+ticker = st.sidebar.selectbox('Choose a stock',tickers)
     
 yesterday = date.today() - timedelta(days=1)
 yesterday.strftime('%m%d%y')
