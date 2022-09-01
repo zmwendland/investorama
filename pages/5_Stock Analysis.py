@@ -39,7 +39,7 @@ while stock_info.get_market_status() == 'REGULAR':
         st.metric(label='',value=stock,delta=change)
 else:
         start = dt.datetime.now()
-        name = stock_info.get_data(ticker)
+        name = stock_info.get_postmarket_price(ticker)
         name = list(name['ticker'])
         name = name[0]
         stock = stock_info.get_live_price(ticker)
