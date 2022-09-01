@@ -34,7 +34,8 @@ if submit_button:
     last = stock_info.get_data(ticker,start_date=start)
     last = list(last['open'])
     change = stock/round(last[0],2)-1
-    change = round(change,2)+'%'
+    change = round(change,2)
+    change = str(change)+'%'
     st.metric(label=name,value=stock,delta=change)
 else:
     st.subheader('Press GO')
