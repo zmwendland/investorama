@@ -49,6 +49,6 @@ else:
         change = stock/round(last[0],2)-1
         change = round(change,2)
         change = str(change)+'%'
-        st.subheader(name+' **Market Closed**')
-        st.caption('closed')
+        st.subheader(name)
+        st.caption('**Market Closed**')
         st.metric(label='',value=stock,delta=change)
