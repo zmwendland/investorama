@@ -103,7 +103,7 @@ col9.subheader('**WTI Crude Oil**')
 col9.metric(label='',value=round(oil,2),delta=oil_pct)
 
 st.subheader('Futures')
-st.dataframe(futures)
+st.dataframe(fdf)
 st.subheader('Top 20 Gainers')
 st.dataframe(stock_info.get_day_gainers(20))
 st.subheader('Top 20 losers')
