@@ -38,4 +38,5 @@ if ticker:
     st.subheader(name)
     st.metric(label='',value=stock,delta=change)
 else:
-    st.subheader('Press GO')
+    if IndexError():
+        st.caption('Error')
