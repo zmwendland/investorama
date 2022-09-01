@@ -45,10 +45,9 @@ else:
         stock = stock_info.get_live_price(ticker)
         stock = round(stock,2)
         last = stock_info.get_data(ticker,start_date=start)
-        last = list(last['open'])
+        last = list(last['close'])
         change = stock/round(last[0],2)-1
         change = round(change,2)
         change = str(change)+'%'
-        st.subheader(name)
-        st.caption('**Market Closed**')
+        st.subheader(name+' **Market Closed**')
         st.metric(label='',value=stock,delta=change)
