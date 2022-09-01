@@ -13,7 +13,7 @@ from datetime import  date, timedelta
 from yahoo_fin import stock_info
 import streamlit as st
 
-symbols = pd.read_csv('symbols.csv')
+symbols = pd.read_csv('pages/Datasets/symbols.csv')
 tickers = symbols['Ticker'].sort_values().tolist() 
 ticker = st.sidebar.selectbox('Choose a stock',tickers)
     
