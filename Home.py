@@ -71,7 +71,7 @@ oil_pct = str(round((oil/oil_yst_final-1)*100,2))+'%'
 
 futures = stock_info.get_futures()
 futures.reset_index()
-futures = futures[0:6]
+futures = futures[0:19]
 
 mkt_time = str(futures['Market Time'][0])
 # mkt_time = mkt_time.replace('AM','')
