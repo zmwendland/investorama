@@ -28,7 +28,6 @@ if ticker:
     name = stock_info.get_data(ticker)
     name = list(name['ticker'])
     name = name[0]
-    name = st.subheader(name)
     stock = stock_info.get_live_price(ticker)
     stock = round(stock,2)
     last = stock_info.get_data(ticker,start_date=start)
@@ -36,6 +35,7 @@ if ticker:
     change = stock/round(last[0],2)-1
     change = round(change,2)
     change = str(change)+'%'
-    st.metric(label=name,value=stock,delta=change)
+    st.subheader(name)
+    st.metric(label='',value=stock,delta=change)
 else:
     st.subheader('Press GO')
