@@ -85,7 +85,7 @@ mkt_time = mkt_time.replace('EDT', '')
 # futures.rename(columns={'Unnamed: 7':'Volume'})
 
 col4,col5,col6 = st.columns(3)
-col4.subheader('**S&P 500**')
+components.html("""<h4>"S&P 500"</h4>""")
 col4.metric(label='',value=round(spx,2),delta=spx_pct)
 col5.subheader('**DOW**')
 col5.metric(label='',value=round(dow,2),delta=dow_pct)
