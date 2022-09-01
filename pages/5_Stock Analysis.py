@@ -42,13 +42,15 @@ else:
         name = stock_info.get_data(ticker)
         name = list(name['ticker'])
         name = name[0]
+        close = stock_info.get_live_price(ticker)
+        close = round(stock,2)
         stock = stock_info.get_postmarket_price(ticker)
         stock = round(stock,2)
         last = stock_info.get_data(ticker,start_date=start)
         last = list(last['close'])
         last = last[0]
         last = round(last,2)
-        change = stock/last-1
+        change = last/close-1
         change = round(change,2)
         change = str(change)+'%'
         st.subheader(name+' **Market Closed**')
