@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 stonksForm = st.form('Enter Ticker Symbol to Correlate')
 stonk = stonksForm.text_input('Symbol','AAPL')
 
-start = datetime(2021,1,1)
+start = datetime(2022,1,1)
 stocks = [stonk,'SPY','QQQ','^RUT','GC=F','CL=F','^TNX', 'DX=F',
           'BTC-USD','EURUSD=X','USDJPY=X']
 stocks_data = []
@@ -41,7 +41,7 @@ mask[np.triu_indices_from(mask)] = True
 
 submit_button = stonksForm.form_submit_button('Correlate!')
 if submit_button:
-    start = datetime(2021,1,1)
+    start = datetime(2022,1,1)
     stocks = [stonk,'SPY','QQQ','^RUT','GC=F','CL=F','^TNX', 'DX=F',
               'BTC-USD','EURUSD=X','USDJPY=X']
     stocks_data = []
@@ -64,7 +64,7 @@ if submit_button:
     mask[np.triu_indices_from(mask)] = True
     
     fig, ax = plt.subplots()
-    st.title('Correlation 2021-Present')
+    st.title('Correlation YTD')
     sns.heatmap(corr_df, cmap='RdYlGn', annot=True, fmt='.2f',vmax=1.0, vmin=-1.0 , mask = mask, linewidths=2.25,ax=ax)
     # plt.yticks(rotation=0) 
     # plt.xticks(rotation=90)
