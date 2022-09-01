@@ -26,12 +26,15 @@ st.markdown(
     """
     )
 
-  
+def formatter(numb):
+    float_formatter = "{:.2f}".format
+    return numb
 
 yesterday = date.today() - timedelta(days=1)
 yesterday.strftime('%m%d%y')
 
 spx = stock_info.get_live_price('^gspc')
+spx = formatter(spx)
 dow = stock_info.get_live_price('^dji')
 qqq = stock_info.get_live_price('^ixic')
 ten_yr = round(stock_info.get_live_price('^tnx'),2)
