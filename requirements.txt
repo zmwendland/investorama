@@ -10,5 +10,4 @@ seaborn
 matplotlib
 investpy
 pillow
-urllib.requests
 
