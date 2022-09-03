@@ -84,7 +84,7 @@ fdf = pd.DataFrame(futures)
 fdf = fdf.drop(columns=['Day Chart','Change','Unnamed: 7'])
 fdf = fdf.round({'Last Price':2})
 fdf['Last Price']  = fdf['Last Price'].apply(lambda x : "{:,}".format(x))
-fdf['Volume']  = fdf['Volume'].apply(lambda x : "{:,}".format(x))
+#fdf['Volume']  = fdf['Volume'].apply(lambda x : "{:,}".format(x))
 fdf = fdf.round({'% Change':2})
 fdf.style.format({'% Change': '{:.2%}'})
 
