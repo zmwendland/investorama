@@ -15,10 +15,6 @@ st.set_page_config(
 st.title('Welcome to Investorama!')
 
 
-ur.urlretrieve('https://imageio.forbes.com/specials-images/imageserve/627d3f18f0d6a392185ca2de/Stock-Market-Crash-2020/0x0.jpg?crop=3386,1905,x0,y82,safe&height=400&width=711&fit=bounds'
-               ,"inv.png")
-img_1 = Image.open('inv.png')
-st.image(img_1)
 
 st.markdown(
     """
@@ -43,7 +39,7 @@ ten_yr = round(stock_info.get_live_price('^tnx'),2)
 gold = stock_info.get_live_price('GC=F')
 oil = stock_info.get_live_price('CL=F')
 
-spx_yst = stock_info.get_data('^gspc',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
+spx_yst = stock_info.get_data('^gspc',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='daily')
 spx_yesterday = pd.DataFrame(spx_yst).reset_index()
 spx_yst_final = spx_yesterday['close'][0]
 spx_pct = str(round((spx/spx_yst_final-1)*100,2))+'%'
