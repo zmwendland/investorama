@@ -39,7 +39,7 @@ ten_yr = round(stock_info.get_live_price('^tnx'),2)
 gold = stock_info.get_live_price('GC=F')
 oil = stock_info.get_live_price('CL=F')
 
-spx_yst = stock_info.get_data('^gspc',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='daily')
+spx_yst = stock_info.get_data('^gspc',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
 spx_yesterday = pd.DataFrame(spx_yst).reset_index()
 spx_yst_final = spx_yesterday['close'][0]
 spx_pct = str(round((spx/spx_yst_final-1)*100,2))+'%'
