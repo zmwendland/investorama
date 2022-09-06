@@ -4,8 +4,6 @@ from datetime import  date, timedelta
 import datetime as dt 
 from yahoo_fin import stock_info 
 import streamlit.components.v1 as components
-from PIL import Image
-import urllib.request as ur
 
 st.set_page_config(
     page_title="Investorama",
