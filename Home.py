@@ -5,14 +5,15 @@ import datetime as dt
 from yahoo_fin import stock_info 
 import streamlit.components.v1 as components
 
+
 st.set_page_config(
     page_title="Investorama",
     page_icon="📈",
 )
 
+#st.sidebar.success('Navigation')
+
 st.title('Welcome to Investorama!')
-
-
 
 st.markdown(
     """
@@ -28,7 +29,7 @@ st.header('Market Status: '+stock_info.get_market_status())
 st.subheader('Key Quotes')
 
 yesterday = date.today() - timedelta(days=1)
-yest1 = yesterday.strftime('%m%d%y')
+yesterday.strftime('%m%d%y')
 
 spx = stock_info.get_live_price('^gspc')
 dow = stock_info.get_live_price('^dji')
@@ -37,7 +38,7 @@ ten_yr = round(stock_info.get_live_price('^tnx'),2)
 gold = stock_info.get_live_price('GC=F')
 oil = stock_info.get_live_price('CL=F')
 
-spx_yst = stock_info.get_data('^gspc',start_date=yest1, end_date=None,interval='1d')
+spx_yst = stock_info.get_data('^gspc',start_date=yesterday.strftime('%m%d%y'), end_date=None,interval='1d')
 spx_yesterday = pd.DataFrame(spx_yst).reset_index()
 spx_yst_final = spx_yesterday['close'][0]
 spx_pct = str(round((spx/spx_yst_final-1)*100,2))+'%'
@@ -83,7 +84,7 @@ fdf = pd.DataFrame(futures)
 fdf = fdf.drop(columns=['Day Chart','Change','Unnamed: 7'])
 fdf = fdf.round({'Last Price':2})
 fdf['Last Price']  = fdf['Last Price'].apply(lambda x : "{:,}".format(x))
-#fdf['Volume']  = fdf['Volume'].apply(lambda x : "{:,}".format(x))
+fdf['Volume']  = fdf['Volume'].apply(lambda x : "{:,}".format(x))
 fdf = fdf.round({'% Change':2})
 fdf.style.format({'% Change': '{:.2%}'})
 
