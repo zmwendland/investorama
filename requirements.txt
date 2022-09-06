@@ -9,5 +9,4 @@ numpy
 seaborn
 matplotlib
 investpy
-pillow
 
