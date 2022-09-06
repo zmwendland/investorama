@@ -3,6 +3,7 @@ import streamlit as st
 from datetime import  date, timedelta
 import datetime as dt 
 from yahoo_fin import stock_info 
+import streamlit.components.v1 as components
 
 
 st.set_page_config(
@@ -75,15 +76,15 @@ classes = ['SPX','DOW','QQQ','10-Yr Bond','Gold','WTI Crude Oil']
 d = {'Quote': data, '% Change': change}
 df = pd.DataFrame(d,columns=['Quote', '% Change'],index=classes)
 df = df.round({'Quote':2})
-df['Quote'] = df['Quote'].apply(lambda x : "{:,}".format(x))
+# df['Quote'] = df['Quote'].apply(lambda x : "{:,}".format(x))
 st.write(df)
 
 futures = stock_info.get_futures()
 fdf = pd.DataFrame(futures)
 fdf = fdf.drop(columns=['Day Chart','Change','Unnamed: 7'])
 fdf = fdf.round({'Last Price':2})
-fdf['Last Price']  = fdf['Last Price'].apply(lambda x : "{:,}".format(x))
-fdf['Volume']  = fdf['Volume'].apply(lambda x : "{:,}".format(x))
+# fdf['Last Price']  = fdf['Last Price'].apply(lambda x : "{:,}".format(x))
+# fdf['Volume']  = fdf['Volume'].apply(lambda x : "{:,}".format(x))
 fdf = fdf.round({'% Change':2})
 fdf.style.format({'% Change': '{:.2%}'})
 
