@@ -78,7 +78,7 @@ df = pd.DataFrame(d,columns=['Quote', '% Change'],index=classes)
 df = df.round({'Quote':2})
 df = df.pivot(index=None, columns='Quote',values='% Change')
 # df['Quote'] = df['Quote'].apply(lambda x : "{:,}".format(x))
-st.write(df)
+st.write(df.dropna())
 
 futures = stock_info.get_futures()
 fdf = pd.DataFrame(futures)
