@@ -9,6 +9,7 @@ st.markdown(
     """
     ### Financial Data & News 
     - [Yahoo Finance](https://finance.yahoo.com)
+    - [Fed News](https://www.federalreserve.gov/newsevents.htm)
     - [Finviz Stock Screener](https://finviz.com)
     - [Weekly Data and Market Calendar](https://www.marketwatch.com/economy-politics/calendar)
     - [CNBC](https://cnbc.com)
