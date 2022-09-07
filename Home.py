@@ -76,7 +76,7 @@ classes = ['SPX','DOW','QQQ','10-Yr Bond','Gold','WTI Crude Oil']
 d = {'Quote': data, '% Change': change}
 df = pd.DataFrame(d,columns=['Quote', '% Change'],index=classes)
 df = df.round({'Quote':2})
-df = df.pivot(index=None, columns='Quote')
+df = df.pivot(index=None, columns='% Change')
 # df['Quote'] = df['Quote'].apply(lambda x : "{:,}".format(x))
 st.write(df.dropna())
 
