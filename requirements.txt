@@ -9,5 +9,5 @@ numpy
 seaborn
 matplotlib
 investpy
-cufflinks
+cufflinks==0.17.3
 warnings
