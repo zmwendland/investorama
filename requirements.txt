@@ -9,4 +9,4 @@ numpy
 seaborn
 matplotlib
 investpy
-
+cufflinks
