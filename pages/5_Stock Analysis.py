@@ -1,57 +1,29 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Aug 31 16:52:16 2022
+import cufflinks as cf
+import yfinance as yf
+import warnings
+from datetime import datetime as dt
 
-@author: Zach
-"""
+warnings.filterwarnings("ignore")
 
-import pandas as pd
-# import yfinance as yf
-import datetime as dt
-from datetime import  date, timedelta
-# import matplotlib as mpl
-from yahoo_fin import stock_info
-import streamlit as st
+cf.set_config_file(theme='pearl', world_readable=False)
+cf.go_offline()
 
-symbols = pd.read_csv('pages/Datasets/symbols.csv')
-tickers = symbols['Ticker'].sort_values().tolist() 
-ticker = st.sidebar.selectbox('Choose a stock',tickers)
-    
-yesterday = date.today() - timedelta(days=1)
-yesterday.strftime('%m%d%y')
+start = '2021-01-01'
+end = dt.today()
 
-st.subheader('Single Stock Daily Performance')
+stockForm = st.form('Input Ticker')
+inputTicker = stockForm.text_input(label='Enter Ticker',value='aapl')
+submitbutton = stockForm.form_submit_button('Go')
+if submitbutton:
+    stock = yf.download(inputTicker, start,end)
+    close = stock['Close']
 
-while stock_info.get_market_status() == 'REGULAR':
-    if ticker:
-        start = dt.datetime.now()
-        name = stock_info.get_data(ticker)
-        name = list(name['ticker'])
-        name = name[0]
-        stock = stock_info.get_live_price(ticker)
-        stock = round(stock,2)
-        last = stock_info.get_data(ticker,start_date=start)
-        last = list(last['open'])
-        change = stock/round(last[0],2)-1
-        change = round(change,2)*100
-        change = str(change)+'%'
-        st.subheader(name)
-        st.metric(label='',value=stock,delta=change)
-else:
-        start = dt.datetime.now()
-        name = stock_info.get_data(ticker)
-        name = list(name['ticker'])
-        name = name[0]
-        close = stock_info.get_live_price(ticker)
-        close = round(close,2)
-        stock = stock_info.get_postmarket_price(ticker)
-        stock = round(stock,2)
-        last = stock_info.get_data(ticker,start_date=start)
-        last = list(last['close'])
-        last = last[0]
-        last = round(last,2)
-        change = (stock/close-1)*100
-        change = round(change,2)
-        change = str(change)+'%'
-        st.subheader(name+' **Market Closed**')
-        st.metric(label='',value=stock,delta=change)
+    stock['Close'].iplot(title='Stock Price Chart',colors=['red'])
+
+    stock['Close'].iplot(title='Returns',bestfit=True, bestfit_colors=['blue'])
+
+    qf=cf.QuantFig(stock,title='First Quant Figure',legend='top',name='GS')
+    qf.add_sma([10,20],width=2,color=['green','lightgreen'],legendgroup=True)
+    qf.add_bollinger_bands()
+    qf.add_volume()
+    qf.iplot()
